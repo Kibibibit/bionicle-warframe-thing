@@ -1,0 +1,68 @@
+[gd_scene load_steps=10 format=3 uid="uid://cfeuhukys1afy"]
+
+[ext_resource type="Material" uid="uid://ex4no30jurf8" path="res://resources/material/floor_material.tres" id="1_751sa"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sealr"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_ir72u"]
+sky_material = SubResource("ProceduralSkyMaterial_sealr")
+
+[sub_resource type="Environment" id="Environment_amp4u"]
+background_mode = 2
+sky = SubResource("Sky_ir72u")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_h6tfy"]
+friction = 0.5
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tbygv"]
+size = Vector3(100, 1, 100)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_q08y4"]
+material = ExtResource("1_751sa")
+size = Vector2(100, 100)
+subdivide_width = 10
+subdivide_depth = 10
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hn576"]
+size = Vector3(100, 1, 100)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fyu53"]
+material = ExtResource("1_751sa")
+size = Vector2(100, 100)
+subdivide_width = 10
+subdivide_depth = 10
+
+[node name="World" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_amp4u")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_h6tfy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_tbygv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("PlaneMesh_q08y4")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.64667, 0.76277, 0, -0.76277, -0.64667, 0, 20.9033, 0)
+shadow_enabled = true
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.80314, 0.59579, 0, -0.59579, 0.80314, 0, 2.40034, 42.8883)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_hn576")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0, 0)
+mesh = SubResource("PlaneMesh_fyu53")
+skeleton = NodePath("../../StaticBody3D2")

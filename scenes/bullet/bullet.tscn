@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://r6rupuura7b5"]
+
+[ext_resource type="Material" uid="uid://00rmiwuiway7" path="res://scenes/bullet/bullet_material.tres" id="1_gpx6o"]
+[ext_resource type="Script" path="res://scenes/bullet/bullet.gd" id="1_se7pn"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_udfhe"]
+material = ExtResource("1_gpx6o")
+radius = 0.1
+height = 0.4
+radial_segments = 4
+rings = 1
+
+[node name="Bullet" type="Node3D"]
+script = ExtResource("1_se7pn")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.434167)
+target_position = Vector3(0, 0, -1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.2)
+mesh = SubResource("CapsuleMesh_udfhe")

@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwh2gjl7riikb"]
+
+[ext_resource type="Script" path="res://scenes/hit_effect/hit_effect.gd" id="1_1c505"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_p7r1t"]
+direction = Vector3(0, 0, 1)
+spread = 29.12
+initial_velocity_min = 5.0
+initial_velocity_max = 6.0
+angle_min = -180.0
+angle_max = 180.0
+scale_min = 0.1
+scale_max = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g3t68"]
+transparency = 1
+albedo_color = Color(0.537255, 0.537255, 0.537255, 0.796078)
+
+[sub_resource type="BoxMesh" id="BoxMesh_p4ywg"]
+material = SubResource("StandardMaterial3D_g3t68")
+size = Vector3(0.1, 0.1, 0.1)
+
+[node name="HitEffect" type="GPUParticles3D"]
+emitting = false
+amount = 50
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_p7r1t")
+draw_pass_1 = SubResource("BoxMesh_p4ywg")
+script = ExtResource("1_1c505")

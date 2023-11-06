@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://ds60rw2j4jlsy"]
+
+[ext_resource type="PackedScene" uid="uid://cfeuhukys1afy" path="res://scenes/world/world.tscn" id="1_0nlum"]
+[ext_resource type="PackedScene" uid="uid://cfy0b4mr84s7y" path="res://scenes/character/character.tscn" id="2_ey1a2"]
+[ext_resource type="PackedScene" uid="uid://coqfa85pr5fxx" path="res://scenes/ui/ui.tscn" id="3_o4cyi"]
+[ext_resource type="Script" path="res://scenes/main/entity_parent.gd" id="3_x3v8w"]
+
+[node name="Main" type="Node3D"]
+
+[node name="World" parent="." instance=ExtResource("1_0nlum")]
+
+[node name="UI" parent="." instance=ExtResource("3_o4cyi")]
+
+[node name="EntityParent" type="Node3D" parent="."]
+script = ExtResource("3_x3v8w")
+
+[node name="Character" parent="EntityParent" instance=ExtResource("2_ey1a2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.45071, 2.2055, -0.185234)

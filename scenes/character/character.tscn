@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=3 uid="uid://cfy0b4mr84s7y"]
+
+[ext_resource type="Script" path="res://scenes/character/character.gd" id="1_n2bp5"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ccwju"]
+radius = 0.4
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_y5odl"]
+radius = 0.4
+
+[sub_resource type="BoxMesh" id="BoxMesh_vu538"]
+size = Vector3(0.8, 0.8, 0.8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_y3um0"]
+size = Vector3(0.1, 0.1, 1)
+
+[node name="Character" type="CharacterBody3D"]
+script = ExtResource("1_n2bp5")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_ccwju")
+
+[node name="AimRay" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+target_position = Vector3(0, 0, -100)
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_y5odl")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+
+[node name="HeadMesh" type="MeshInstance3D" parent="Head"]
+mesh = SubResource("BoxMesh_vu538")
+
+[node name="CameraMount" type="Node3D" parent="Head"]
+
+[node name="CameraRay" type="RayCast3D" parent="Head/CameraMount"]
+target_position = Vector3(0, 0.5, 3)
+
+[node name="CameraPoint" type="Node3D" parent="Head/CameraMount"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 3)
+
+[node name="Camera3D" type="Camera3D" parent="Head/CameraMount/CameraPoint"]
+transform = Transform3D(1, 0, 0, 0, 0.992332, 0.123601, 0, -0.123601, 0.992332, 1.26744, 0, -0.365)
+
+[node name="CameraAimRay" type="RayCast3D" parent="Head/CameraMount/CameraPoint/Camera3D"]
+target_position = Vector3(0, 0, -100)
+
+[node name="ArmPoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.489007, 1.26346, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ArmPoint"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+mesh = SubResource("BoxMesh_y3um0")
+
+[node name="GunOrigin" type="Node3D" parent="ArmPoint"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
