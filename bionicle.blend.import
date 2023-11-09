@@ -28,7 +28,55 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={}
+_subresources={
+"nodes": {
+"PATH:Ankle": {
+"import/skip_import": true
+},
+"PATH:BallJoin": {
+"import/skip_import": true
+},
+"PATH:BoneControllerMesh": {
+"import/skip_import": true
+},
+"PATH:Foot": {
+"import/skip_import": true
+},
+"PATH:Gun": {
+"import/skip_import": true
+},
+"PATH:Hand": {
+"import/skip_import": true
+},
+"PATH:Head_001": {
+"import/skip_import": true
+},
+"PATH:Hips_001": {
+"import/skip_import": true
+},
+"PATH:LowerLimb": {
+"import/skip_import": true
+},
+"PATH:Neck_001": {
+"import/skip_import": true
+},
+"PATH:PoleContorller": {
+"import/skip_import": true
+},
+"PATH:RootBoneMesh": {
+"import/skip_import": true
+},
+"PATH:TestBlade": {
+"import/skip_import": true
+},
+"PATH:Torso_001": {
+"import/skip_import": true
+},
+"PATH:UpperLimb": {
+"import/skip_import": true
+}
+}
+}
 gltf/embedded_image_handling=1
 blender/nodes/visible=0
 blender/nodes/punctual_lights=true

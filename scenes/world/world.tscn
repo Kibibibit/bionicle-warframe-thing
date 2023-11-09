@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://cfeuhukys1afy"]
+[gd_scene load_steps=11 format=3 uid="uid://cfeuhukys1afy"]
 
 [ext_resource type="Material" uid="uid://ex4no30jurf8" path="res://resources/material/floor_material.tres" id="1_751sa"]
+[ext_resource type="PackedScene" uid="uid://dtqfyvgevdoqf" path="res://bionicle.blend" id="2_hmwjf"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sealr"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -66,3 +67,6 @@ shape = SubResource("BoxShape3D_hn576")
 transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0, 0)
 mesh = SubResource("PlaneMesh_fyu53")
 skeleton = NodePath("../../StaticBody3D2")
+
+[node name="bionicle" parent="." instance=ExtResource("2_hmwjf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.32359, 4.76837e-07, 11.4096)
